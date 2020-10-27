@@ -34,3 +34,12 @@
 
 ## Filter data with limit
 ![Alt text](/screen_shots/demo1/Screenshot_13.png?raw=true "Simple Code on IPython Notebooks")
+
+## In for multiple columns Works after v2.1.0
+![Alt text](/screen_shots/demo1/Screenshot_14.png?raw=true "Simple Code on IPython Notebooks")
+
+## Subquery in
+![Alt text](/screen_shots/demo1/Screenshot_15.png?raw=true "Simple Code on IPython Notebooks")
+
+## Subquery exists
+![Alt text](/screen_shots/demo1/Screenshot_16.png?raw=true "Simple Code on IPython Notebooks")
