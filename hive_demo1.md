@@ -25,3 +25,12 @@
 
 ## Nested SELECT after the FROM
 ![Alt text](/screen_shots/demo1/Screenshot_10.png?raw=true "Simple Code on IPython Notebooks")
+
+## Nest SELECT using CTE
+![Alt text](/screen_shots/demo1/Screenshot_11.png?raw=true "Simple Code on IPython Notebooks")
+
+## Select with expression
+![Alt text](/screen_shots/demo1/Screenshot_12.png?raw=true "Simple Code on IPython Notebooks")
+
+## Filter data with limit
+![Alt text](/screen_shots/demo1/Screenshot_13.png?raw=true "Simple Code on IPython Notebooks")
