@@ -12,5 +12,5 @@
 ## Equal JOIN between two tables
 ![Alt text](/screen_shots/demo2/Screenshot_4.png?raw=true "Simple Code on IPython Notebooks")
 
-## Equal JOIN between two tables
+## Join with complex expression - conditional join
 ![Alt text](/screen_shots/demo2/Screenshot_5.png?raw=true "Simple Code on IPython Notebooks")
