@@ -1,18 +1,14 @@
 # Table Joins and Load Data
 
-## Create Hive table
+## Create directory on hdfs
 ![Alt text](/screen_shots/demo3/Screenshot_1.png?raw=true "Simple Code on IPython Notebooks")
 # Table Joins and Load Data
 
-## Create Hive table
+## Create data csv file
 ![Alt text](/screen_shots/demo3/Screenshot_1.1.png?raw=true "Simple Code on IPython Notebooks")
 
-# Table Joins and Load Data
-
-## Create Hive table
+## Put CSV file on hdfs
 ![Alt text](/screen_shots/demo3/Screenshot_1.2.png?raw=true "Simple Code on IPython Notebooks")
-
-# Table Joins and Load Data
 
 ## Create Hive table
 ![Alt text](/screen_shots/demo3/Screenshot_2.png?raw=true "Simple Code on IPython Notebooks")
