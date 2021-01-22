@@ -2,8 +2,8 @@ Creating Database
 -----------------------
 Example1: Database Creation;
 
-hive> CREATE DATABASE myhivetest;
-OK
+hive> CREATE DATABASE myhivetest; <br>
+OK <br>
 Time taken: 7.812 seconds
 hive> CREATE SCHEMA IF NOT EXISTS myhivetest; <br/>
 OK
