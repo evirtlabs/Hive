@@ -5,7 +5,7 @@ Example1: Database Creation;
 hive> CREATE DATABASE myhivetest;
 OK
 Time taken: 7.812 seconds
-hive> CREATE SCHEMA IF NOT EXISTS myhivetest;
+hive> CREATE SCHEMA IF NOT EXISTS myhivetest; <br/>
 OK
 Time taken: 0.036 seconds
 hive> CREATE DATABASE IF NOT EXIST myhivetest
