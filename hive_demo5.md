@@ -1,4 +1,4 @@
-#Complex Queries in Hive <br>
+# Complex Queries in Hive <br>
 
 1. Upload all the data in hdfs <br>
 ------------------------------- <br>
@@ -40,7 +40,7 @@ hive> <br>
 
 ************************************************ <br>
 
-Bucket <br>
+## Bucket <br>
 ------- <br>
 bucket is another technique to cluster datasets into more manageable parts to optimize query performance. Different from partition, the bucket corresponds to <br>
 segments of files in HDFS. Bucket numbers are used to define the proper number of buckets, we should avoid having too much or too little of data in each bucket. <br>
@@ -111,7 +111,7 @@ Found 2 items <br>
 (base) [root@hadoop data]# <br>
 
 *********************************************** <br>
-HIVE VIEWS <br>
+## HIVE VIEWS <br>
 ------------
 In Hive, views are logical data structures that can be used to simplify queries by either hiding the complexities such as joins, subqueries, and filters or by flatting the  data. Unlike some RDBMS, Hive views do not store data or get materialized. Once the Hive view is created, its schema is frozen immediately. Subsequent changes to the underlying tables (for example, adding a column) will not be reflected in the view’s schema. <br>
 
