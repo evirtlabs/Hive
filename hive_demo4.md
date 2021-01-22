@@ -218,148 +218,148 @@ hive> <br>
  
 ## Example7: Create Partitioned table <br>
 
-hive> CREATE TABLE employee_partitioned (
-    > name STRING,
-    > work_place ARRAY<STRING>,
-    > gender_age STRUCT<gender:STRING,age:INT>,
-    > skills_score MAP<STRING,INT>,
-    >  depart_title MAP<STRING,ARRAY<STRING>>
-    > )
-    >  PARTITIONED BY (year INT, month INT)
-    > ROW FORMAT DELIMITED
-    > FIELDS TERMINATED BY '|'
-    > COLLECTION ITEMS TERMINATED BY ','
-    > MAP KEYS TERMINATED BY ':';
-OK
-Time taken: 7.953 seconds
-hive>
+hive> CREATE TABLE employee_partitioned ( <br>
+    > name STRING, <br>
+    > work_place ARRAY<STRING>, <br>
+    > gender_age STRUCT<gender:STRING,age:INT>, <br>
+    > skills_score MAP<STRING,INT>, <br>
+    >  depart_title MAP<STRING,ARRAY<STRING>> <br>
+    > ) <br>
+    >  PARTITIONED BY (year INT, month INT) <br>
+    > ROW FORMAT DELIMITED <br>
+    > FIELDS TERMINATED BY '|' <br>
+    > COLLECTION ITEMS TERMINATED BY ',' <br>
+    > MAP KEYS TERMINATED BY ':'; <br>
+OK <br>
+Time taken: 7.953 seconds <br>
+hive> <br>
 
-hive>  DESC employee_partitioned;
-OK
-name                    string
-work_place              array<string>
-gender_age              struct<gender:string,age:int>
-skills_score            map<string,int>
-depart_title            map<string,array<string>>
-year                    int
-month                   int
+hive>  DESC employee_partitioned; <br>
+OK <br>
+name                    string <br>
+work_place              array<string> <br>
+gender_age              struct<gender:string,age:int> <br>
+skills_score            map<string,int> <br>
+depart_title            map<string,array<string>> <br>
+year                    int <br>
+month                   int <br>
 
-# Partition Information
-# col_name              data_type               comment
+# Partition Information <br>
+# col_name              data_type               comment <br>
 
-year                    int
-month                   int
-Time taken: 0.595 seconds, Fetched: 13 row(s)
-hive>
+year                    int <br>
+month                   int <br>
+Time taken: 0.595 seconds, Fetched: 13 row(s) <br>
+hive> <br>
 
-Perform partition operations, such as add, remove, and rename partitions
+Perform partition operations, such as add, remove, and rename partitions <br>
 
-hive> ALTER TABLE employee_partitioned ADD
-    > PARTITION (year=2018, month=11) PARTITION (year=2018,
-    >       month=12);
-OK
-Time taken: 0.475 seconds
-hive>
+hive> ALTER TABLE employee_partitioned ADD <br>
+    > PARTITION (year=2018, month=11) PARTITION (year=2018, <br>
+    >       month=12); <br>
+OK <br>
+Time taken: 0.475 seconds <br>
+hive> <br>
 
-hive> SHOW PARTITIONS employee_partitioned;
-OK
-year=2018/month=11
-year=2018/month=12
-Time taken: 0.244 seconds, Fetched: 2 row(s)
-hive>
+hive> SHOW PARTITIONS employee_partitioned; <br>
+OK <br>
+year=2018/month=11 <br>
+year=2018/month=12 <br>
+Time taken: 0.244 seconds, Fetched: 2 row(s) <br>
+hive> <br>
 
-      -- Drop partition with PURGE at the end will remove completely
-      -- Drop partition will NOT remove data for external table
-      -- Drop partition will remove data with partition for internal table
+      -- Drop partition with PURGE at the end will remove completely <br>
+      -- Drop partition will NOT remove data for external table <br>
+      -- Drop partition will remove data with partition for internal table <br>
 
-hive> ALTER TABLE employee_partitioned
-    >  DROP IF EXISTS PARTITION (year=2018, month=11);
-Dropped the partition year=2018/month=11
-OK
-Time taken: 0.933 seconds
-hive>
-
-
-hive> SHOW PARTITIONS employee_partitioned;
-OK
-year=2018/month=12
-Time taken: 0.227 seconds, Fetched: 1 row(s)
-hive>
+hive> ALTER TABLE employee_partitioned <br>
+    >  DROP IF EXISTS PARTITION (year=2018, month=11); <br>
+Dropped the partition year=2018/month=11 <br>
+OK <br>
+Time taken: 0.933 seconds <br>
+hive> <br>
 
 
-hive> ALTER TABLE employee_partitioned
-    > DROP IF EXISTS PARTITION (year=2017);
-OK
-Time taken: 0.243 seconds
+hive> SHOW PARTITIONS employee_partitioned; <br>
+OK <br>
+year=2018/month=12 <br>
+Time taken: 0.227 seconds, Fetched: 1 row(s) <br>
+hive> <br>
 
 
-hive> ALTER TABLE employee_partitioned
-    > DROP IF EXISTS PARTITION (month=9);
-OK
-Time taken: 0.251 seconds
+hive> ALTER TABLE employee_partitioned <br>
+    > DROP IF EXISTS PARTITION (year=2017); <br>
+OK <br>
+Time taken: 0.243 seconds <br>
 
 
-hive> ALTER TABLE employee_partitioned
-    > PARTITION (year=2018, month=12)
-    > RENAME TO PARTITION (year=2018,month=10);
-OK
-Time taken: 0.575 seconds
-hive>
+hive> ALTER TABLE employee_partitioned <br>
+    > DROP IF EXISTS PARTITION (month=9); <br>
+OK <br>
+Time taken: 0.251 seconds <br>
 
-hive> SHOW PARTITIONS employee_partitioned;
-OK
-year=2018/month=10
-Time taken: 0.175 seconds, Fetched: 1 row(s)
-hive>
 
-Load data into a table partition once the partition is created:
+hive> ALTER TABLE employee_partitioned <br>
+    > PARTITION (year=2018, month=12) <br>
+    > RENAME TO PARTITION (year=2018,month=10); <br>
+OK <br>
+Time taken: 0.575 seconds <br>
+hive> <br>
+
+hive> SHOW PARTITIONS employee_partitioned; <br>
+OK <br>
+year=2018/month=10 <br>
+Time taken: 0.175 seconds, Fetched: 1 row(s) <br>
+hive> <br>
+
+Load data into a table partition once the partition is created: <br>
     
-hive>  LOAD DATA INPATH '/root/Hive_Labs/Lab1/data/employee.txt'
-    > OVERWRITE INTO TABLE employee_partitioned
-    > PARTITION (year=2018, month=12);
-Loading data to table default.employee_partitioned partition (year=2018, month=12)
-OK
-Time taken: 1.122 seconds
-hive>
+hive>  LOAD DATA INPATH '/root/Hive_Labs/Lab1/data/employee.txt' <br>
+    > OVERWRITE INTO TABLE employee_partitioned <br>
+    > PARTITION (year=2018, month=12); <br>
+Loading data to table default.employee_partitioned partition (year=2018, month=12) <br>
+OK <br>
+Time taken: 1.122 seconds <br>
+hive> <br>
 
 
-hive> SELECT name, year, month FROM employee_partitioned;
-OK
-Michael 2018    12
-Will    2018    12
-Shelley 2018    12
-Lucy    2018    12
-Time taken: 1.91 seconds, Fetched: 4 row(s)
-hive>
+hive> SELECT name, year, month FROM employee_partitioned; <br>
+OK <br>
+Michael 2018    12 <br>
+Will    2018    12 <br>
+Shelley 2018    12 <br>
+Lucy    2018    12 <br>
+Time taken: 1.91 seconds, Fetched: 4 row(s) <br>
+hive> <br>
 
 
-Add regular columns to a partition table. Note, we CANNOT add new columns as partition columns. There are two options when adding/removing columns from a partition table, CASCADE and RESTRICT. The commonly used CASCADE option cascades the same change to all the partitions in the table. However,  RESTRICT is the default, limiting column changes only to table metadata, which means the changes will be only applied to new partitions rather than existing partitions:
+Add regular columns to a partition table. Note, we CANNOT add new columns as partition columns. There are two options when adding/removing columns from a partition table, <br>  CASCADE and RESTRICT. The commonly used CASCADE option cascades the same change to all the partitions in the table. However,  RESTRICT is the default, limiting column <br> changes only to table metadata, which means the changes will be only applied to new partitions rather than existing partitions: <br>
 
-hive> ALTER TABLE employee_partitioned ADD COLUMNS (work string)
-    > CASCADE;
-OK
-Time taken: 7.167 seconds
-hive>  ALTER TABLE employee_partitioned PARTITION COLUMN(year string);
-OK
-Time taken: 0.345 seconds
-hive> DESC employee_partitioned;
-OK
-name                    string
-work_place              array<string>
-gender_age              struct<gender:string,age:int>
-skills_score            map<string,int>
-depart_title            map<string,array<string>>
-work                    string
-year                    string
-month                   int
+hive> ALTER TABLE employee_partitioned ADD COLUMNS (work string) <br>
+    > CASCADE; <br>
+OK <br>
+Time taken: 7.167 seconds <br>
+hive>  ALTER TABLE employee_partitioned PARTITION COLUMN(year string); <br>
+OK <br>
+Time taken: 0.345 seconds <br>
+hive> DESC employee_partitioned; <br>
+OK <br>
+name                    string <br>
+work_place              array<string> <br>
+gender_age              struct<gender:string,age:int> <br>
+skills_score            map<string,int> <br>
+depart_title            map<string,array<string>> <br>
+work                    string <br>
+year                    string <br>
+month                   int <br>
 
-# Partition Information
-# col_name              data_type               comment
+# Partition Information <br>
+# col_name              data_type               comment <br>
 
-year                    string
-month                   int
-Time taken: 0.717 seconds, Fetched: 14 row(s)
-hive>
+year                    string <br>
+month                   int <br>
+Time taken: 0.717 seconds, Fetched: 14 row(s) <br>
+hive> <br>
 
 
 
